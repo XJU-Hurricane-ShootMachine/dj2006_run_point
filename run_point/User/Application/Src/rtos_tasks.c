@@ -96,7 +96,7 @@ void task2(void *pvParameters) {
     while (1) {
 
         message_polling_data();
-        vTaskDelay(50);
+        vTaskDelay(10);
     }
 }
 
@@ -111,7 +111,8 @@ void task6(void *pvParameters) {
     float spd_out = 0;
 
     while (1) {
-        xQueueReceive(message_queue, &set_angle, 10);
+
+        xQueueReceive(message_queue, &set_angle, 5);
         angle_out = pid_calc(&pid_pos, set_angle, (float)m2006_1.rotor_degree);
         spd_out = pid_calc(&pid_spd, angle_out, (float)m2006_1.speed_rpm);
         dji_motor_set_current(can1_selected, DJI_MOTOR_GROUP1, spd_out, 0, 0,
