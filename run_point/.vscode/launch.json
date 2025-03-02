@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "Debug: OpenOCD",
+            "servertype": "openocd",
+            "executable": "build/Debug/run_point.elf",
+            "runToEntryPoint": "main",
+            "configFiles": [
+                "interface/stlink-v2.cfg",
+                "target/stm32f4x.cfg"
+            ]
+        }
+    ]
+}
